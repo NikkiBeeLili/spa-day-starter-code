@@ -7,9 +7,41 @@
 </head>
 <body>
 <h1>My Super Fancy Spa</h1>
+
 <div id = "clientProfile">
+    <h2>My Profile</h2>
+    <p th:text = ${name}>name</p>
+    <p th:text = ${skinType}>skintype</p>
+    <p th:text = ${manipedi}>manipedi</p>
+
+
 </div>
 <div id = "servicesMenu">
+   <h3>Facial Treatments</h3>
+    <p>
+        The facial treatment services below are recommended by our experts based on your skin type.
+    </p>
+    <table>
+        <th:block block th: each="${appropriateFacial}>appropriateFacials">
+
+            <tr>
+                <td th:text="${appropriateFacial}"></td>
+
+            </tr>
+        </th:block>
+
+    </table>
+
+</div>
+<div id="manidescription" th:if'${manipedi.equals("manicure)}'>
+<h3>Manicure</h3>
+<p th: replace="fragments :: manicureDescription"></p>
+
+
+</div>
+<div id = "pedidescription" th:if'$manipedi.equals("pedicure")}'>
+<p th: replace="fragments :: pedicureDescription"></p>
+
 </div>
 </body>
 </html>
